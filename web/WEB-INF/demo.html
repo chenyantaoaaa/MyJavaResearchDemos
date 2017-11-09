@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+		<meta charset="UTF-8">
+		<title></title>
+	<script>
+		function redir(){
+//        window.location.href="localhost:8060/redir.do";
+			$.ajax({
+				type: "post",
+				url: "localhost:8060/redir.do",
+				data: {},
+				dataType: "json",
+				success: function(data){
+
+				}
+			});
+		}
+	</script>
+	</head>
+	<body>
+	<input value="跳转" onclick="redir()" type="button"/>
+	</body>
+</html>
