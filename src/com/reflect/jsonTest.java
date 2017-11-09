@@ -1,5 +1,6 @@
-package com.pojo;
+package com.reflect;
 
+import com.reflect.JsonBaseClass;
 import net.sf.json.JSONObject;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * @author yantao.chen
  * @date 2017/11/7.
  */
-public class jsonTest extends JsonBaseClass{
+public class jsonTest extends JsonBaseClass {
 
     /**
      * status : 0

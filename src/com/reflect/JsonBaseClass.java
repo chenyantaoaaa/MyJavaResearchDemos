@@ -1,4 +1,4 @@
-package com.pojo;
+package com.reflect;
 
 import net.sf.json.JSONObject;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * json对象转化为java对象基类
+ * json对象转化为java对象基类（利用反射原理）
  *
  * @author yantao.chen
  * @date 2017/11/7.

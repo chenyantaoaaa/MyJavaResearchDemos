@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
+ * 动态代理通用类
+ *
  * @author yantao.chen
  */
 public class CommonDelegate implements InvocationHandler {
