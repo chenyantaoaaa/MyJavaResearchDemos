@@ -1,4 +1,4 @@
-package com.mapper;
+package com.mybatis.mapper;
 
 import com.pojo.UserInfo;
 import org.apache.ibatis.io.Resources;
@@ -65,7 +65,7 @@ public class SqlSessionTest {
 
     @Test
     public void test2(){
-        List<UserInfo> list = sqlSession.selectList("com.mapper.UserMapper.selectUserDetail");
+        List<UserInfo> list = sqlSession.selectList("com.mybatis.mapper.UserMapper.selectUserDetail");
         System.out.println(list);
     }
 }

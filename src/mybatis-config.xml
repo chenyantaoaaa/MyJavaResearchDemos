@@ -20,7 +20,7 @@
 
 
     <mappers>
-        <package name="com.mapper"/>
+        <package name="com.mybatis.mapper"/>
     </mappers>
 
 </configuration>

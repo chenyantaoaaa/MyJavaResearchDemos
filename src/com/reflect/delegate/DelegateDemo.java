@@ -1,4 +1,4 @@
-package com.delegate;
+package com.reflect.delegate;
 
 /**
  * @author yantao.chen
