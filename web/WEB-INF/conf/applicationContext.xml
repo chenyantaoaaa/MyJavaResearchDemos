@@ -30,4 +30,8 @@
     <!-- 加载系统配置文件 -->
     <!--<context:property-placeholder location="classpath:resource/config.properties" />-->
     <context:component-scan base-package="resource" />
+
+    <!--<mvc:resources location="js" mapping="js"/>-->
+    <mvc:default-servlet-handler />
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>
