@@ -69,10 +69,4 @@ public class fileUpload {
         String per = String.valueOf((status.getpBytesRead()/status.getpContentLength())*100)+"%";
         return per;
     }
-
-    public static void main(String[] args) {
-        String s = "F:\\upload\\test.txt";
-        String ss [] = s.split("\\\\");
-        System.out.println(ss[ss.length-1]);
-    }
 }
