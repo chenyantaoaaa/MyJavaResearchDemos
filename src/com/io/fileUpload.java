@@ -1,5 +1,7 @@
 package com.io;
 
+import com.base.MyConstants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +24,6 @@ import java.util.Map;
 @RequestMapping("/upload")
 @SessionAttributes("status")
 public class fileUpload {
-
     //当利用表单提交文件的时候 想要提交后不跳转页面 可以使用 jquery-form.js
 
     @RequestMapping(value = {"/uploadFile"},method = {RequestMethod.POST})
@@ -68,5 +69,16 @@ public class fileUpload {
         }
         String per = String.valueOf((status.getpBytesRead()/status.getpContentLength())*100)+"%";
         return per;
+    }
+
+    //文件上传的监听方法
+    //重写继承于ProgressListener  的监听类
+    //<bean id="multipartResolver" class="com.io.PJCommonsMultipartResolver"/>  在springmvc配置文件中配置自己重写的继承于
+    //CommonsMultipartResolver的类
+
+
+    @RequestMapping(value = {"/testValue"},method = {RequestMethod.GET})
+    public void testValue(){
+        System.out.println(MyConstants.testValue);
     }
 }
