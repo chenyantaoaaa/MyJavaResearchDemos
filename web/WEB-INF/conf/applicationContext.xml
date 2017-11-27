@@ -34,4 +34,12 @@
     <!--<mvc:resources location="js" mapping="js"/>-->
     <mvc:default-servlet-handler />
     <bean id="multipartResolver" class="com.io.PJCommonsMultipartResolver"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="com.interceptor.ExcludeUrlFilter" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
