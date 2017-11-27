@@ -1,10 +1,15 @@
 package com.utils;
 
 import org.junit.Test;
+import org.springframework.scheduling.annotation.Scheduled;
 import redis.clients.jedis.Jedis;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author chenyantao
@@ -15,37 +20,47 @@ public class RedisUtil {
 
     @Test
     public void test1(){
-//        jedis.set("chen","sb2");
-//        System.out.println(jedis.get("chen"));
-        mapSet();
+        List list = new ArrayList<>();
+        list.add("xu");
+        setList("student",list);
+        System.out.println(getList("student"));
     }
 
-    public void mapSet(){
-//        Map<String, String> map = new HashMap<String, String>();
-//        map.put("name", "chenyantao");
-//        map.put("password", "123");
-//        map.put("age", "26");
-//        jedis.hmset("user", map);
+    @Scheduled()
 
-        // map key的个数
-        System.out.println("map的key的个数" + jedis.hlen("user"));
-
-        // map key
-        System.out.println("map的key" + jedis.hkeys("user"));
-
-        // map value
-        System.out.println("map的value" + jedis.hvals("user"));
-
-        // (String key, String... fields)返回值是一个list
-        List<String> list = jedis.hmget("user", "age", "name","password");
-        System.out.println(list);
-
-//        jedis.hdel("user", "age");
-//
-//        System.out.println("删除后map的key" + jedis.hkeys("user"));
+    public Map<String,String> getMap(String mapKey){
+         Map<String,String> resultMap = new HashMap<>();
+         Iterator<String> iter=jedis.hkeys(mapKey).iterator();
+         while (iter.hasNext()){
+             String key = iter.next();
+             resultMap.put(key,jedis.hmget("user",key).get(0));
+         }
+        return resultMap;
     }
 
-    public void setMap(String key,Map<String, Object> map){
-//        jedis.hmset(key, map);
+    public void setMap(String key,Map<String, String> map){
+        jedis.hmset(key,map);
+    }
+
+    public void setList(String key,List<String> list){
+        //开始前，先移除所有的内容
+
+        for (String s : list) {
+            jedis.rpush(key,s);
+        }
+    }
+
+    public List<String> getList(String key){
+        return jedis.lrange(key,0,-1);
+    }
+
+    //清空redis
+    public String flushDb(){
+        return jedis.flushDB();
+    }
+
+    //删除指定key value
+    public void delKey(String key){
+         jedis.del(key);
     }
 }

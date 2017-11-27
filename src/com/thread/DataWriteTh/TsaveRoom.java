@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -28,7 +29,7 @@ public class TsaveRoom
     {
         long begin = System.currentTimeMillis();
 
-        String path = "D:\\baiduyundownload\\如家汉庭等酒店2000W开房数据\\2000W\\1-200W.csv";
+        String path = "D:\\2000W\\最后5000.csv";
         File tempFile = new File(path);
 
         BufferedReader reader = new BufferedReader(new FileReader(tempFile));
@@ -152,7 +153,7 @@ class WriteSqlFile
 
     static File sqlFile = new File("roomSql.sql");
 
-    static List<String> sqlList = new ArrayList<String>();
+    static List<String> sqlList = new CopyOnWriteArrayList<String>();
 
     static BufferedWriter bw = null;
 
