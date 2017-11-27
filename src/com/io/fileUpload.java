@@ -1,6 +1,8 @@
 package com.io;
 
 import com.base.MyConstants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,7 @@ import java.util.Map;
 @RequestMapping("/upload")
 @SessionAttributes("status")
 public class fileUpload {
+    private static Logger logger = LogManager.getLogger(fileUpload.class.getName());
     //当利用表单提交文件的时候 想要提交后不跳转页面 可以使用 jquery-form.js
 
     @RequestMapping(value = {"/uploadFile"},method = {RequestMethod.POST})
@@ -79,6 +82,9 @@ public class fileUpload {
 
     @RequestMapping(value = {"/testValue"},method = {RequestMethod.GET})
     public void testValue(){
+        logger.info("level info print");
+        logger.debug("level debug print");
+        logger.error("level error print");
         System.out.println(MyConstants.testValue);
     }
 }
