@@ -50,6 +50,21 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>basicDemoServlet</servlet-name>
+        <servlet-class>com.springmvc.BasicDemoServlet</servlet-class>
+        <init-param>
+            <param-name>param1</param-name>
+            <param-value>testParam</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>basicDemoServlet</servlet-name>
+        <url-pattern>/basicDemoServlet</url-pattern>
+    </servlet-mapping>
+
 
     <!--    &lt;!&ndash;springmvc配置&ndash;&gt;
         <servlet>

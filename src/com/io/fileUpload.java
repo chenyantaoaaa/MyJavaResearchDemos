@@ -1,6 +1,8 @@
 package com.io;
 
 import com.base.MyConstants;
+import com.pojo.MyXmlBean;
+import com.pojo.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -81,10 +84,17 @@ public class fileUpload {
 
 
     @RequestMapping(value = {"/testValue"},method = {RequestMethod.GET})
-    public void testValue(){
-        logger.info("level info print");
-        logger.debug("level debug print");
-        logger.error("level error print");
-        System.out.println(MyConstants.testValue);
+    public @ResponseBody Student testValue(){
+        Student st = new Student("chen","12");
+        return st;
+    }
+
+    @RequestMapping("/listAll")
+    @ResponseBody
+    public MyXmlBean listAll() {
+        MyXmlBean bean = new MyXmlBean();
+        bean.setName("zhou");
+        bean.setAge("11");
+        return bean;
     }
 }
