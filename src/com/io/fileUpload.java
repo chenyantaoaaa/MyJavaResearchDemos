@@ -1,11 +1,9 @@
 package com.io;
 
-import com.base.MyConstants;
 import com.pojo.MyXmlBean;
 import com.pojo.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -83,8 +80,8 @@ public class fileUpload {
     //CommonsMultipartResolver的类
 
 
-    @RequestMapping(value = {"/testValue"},method = {RequestMethod.GET})
-    public @ResponseBody Student testValue(){
+    @RequestMapping(value = {"/testValue"},method = {RequestMethod.POST})
+    public @ResponseBody Student testValue(Student stu){
         Student st = new Student("chen","12");
         return st;
     }

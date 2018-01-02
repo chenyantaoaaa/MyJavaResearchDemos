@@ -1,7 +1,5 @@
 package com.thread.FileToDatabase;
 
-import com.utils.ExcelUtil;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,8 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
-import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,15 +18,17 @@ import java.util.concurrent.atomic.AtomicLong;
  * 2017/12/31.
  */
 public class FIleTodata {
-    private static int ThreadCount = 4;
+    private static int ThreadCount = 50;
     private static int FinishCount = 0;
 
     private static ArrayBlockingQueue queue = new ArrayBlockingQueue(1000);
 
     private static boolean isFinish = false;
 
-    private static File sqlFile = new File("C:\\Users\\chen\\Desktop\\sqlFile.txt");
-    private static File file = new File("C:\\Users\\chen\\Desktop\\testEx.txt");
+//    private static File sqlFile = new File("C:\\Users\\chen\\Desktop\\sqlFile.txt");
+//    private static File file = new File("C:\\Users\\chen\\Desktop\\testEx.txt");
+    private static File sqlFile = new File("C:\\Users\\admin\\Desktop\\sqlFile.txt");
+    private static File file = new File("C:\\Users\\admin\\Desktop\\testEx.txt");
 
     private static long count = 0;
 
@@ -85,6 +83,7 @@ public class FIleTodata {
     }
 
     public static void F2D(){
+        long time1 = System.currentTimeMillis();
 //        File file = new File("D:\\2000W\\最后5000.csv");
 //        File file = new File("C:\\Users\\chen\\Desktop\\excel1.xlsx");
 
@@ -135,6 +134,8 @@ public class FIleTodata {
             }
         }
         printCount();
+        long time2 = System.currentTimeMillis();
+        System.out.println("totalTime"+(time2-time1));
 
 //        while (queue.size()>0){
 //
